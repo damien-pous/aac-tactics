@@ -1,7 +1,7 @@
 ---
 fullname: AAC Tactics
 shortname: aac-tactics
-organization: coq-community
+organization: rocq-community
 community: true
 action: true
 plugin: true
@@ -11,11 +11,11 @@ coqdoc: true
 coqdoc_index: docs/coqdoc/toc.html
 
 synopsis: >-
-  Coq tactics for rewriting universally quantified equations, modulo
+  Rocq tactics for rewriting universally quantified equations, modulo
   associative (and possibly commutative and idempotent) operators
 
 description: |-
-  This Coq plugin provides tactics for rewriting and proving universally
+  This Rocq plugin provides tactics for rewriting and proving universally
   quantified equations modulo associativity and commutativity of some operator,
   with idempotent commutative operators enabling additional simplifications.
   The tactics can be applied for custom operators by registering the operators and
@@ -25,7 +25,7 @@ description: |-
 publications:
 - pub_doi: 10.1007/978-3-642-25379-9_14
   pub_url: https://arxiv.org/abs/1106.4448
-  pub_title: Tactics for Reasoning modulo AC in Coq
+  pub_title: Tactics for Reasoning modulo AC in Rocq
 
 authors:
 - name: Thomas Braibant
@@ -48,7 +48,7 @@ license:
   identifier: LGPL-3.0-or-later
 
 supported_coq_versions:
-  text: 9.0 (use the corresponding branch or release for other Coq versions)
+  text: 9.0 (use the corresponding branch or release for other Rocq versions)
   opam: '{>= "9.0" & < "9.1"}'
 
 supported_ocaml_versions:
@@ -56,7 +56,7 @@ supported_ocaml_versions:
     opam: '{>= "4.09.0"}'
 
 tested_coq_opam_versions:
-- version: '9.0'
+- version: '9.0.0'
   repo: 'rocq/rocq-prover'
 
 namespace: AAC_tactics
@@ -69,7 +69,7 @@ keywords:
 - name: decision procedure
 
 categories:
-- name: Miscellaneous/Coq Extensions
+- name: Miscellaneous/Rocq Extensions
 - name: Computer Science/Decision Procedures and Certified Algorithms/Decision procedures
 
 documentation: |
@@ -121,9 +121,9 @@ documentation: |
   the `.mli` files as the main source of information on each `.ml` file.
 
   See also the [latest coqdoc
-  documentation](https://coq-community.org/aac-tactics/docs/coqdoc/toc.html)
+  documentation](https://rocq-community.org/aac-tactics/docs/coqdoc/toc.html)
   and the [latest ocamldoc
-  documentation](https://coq-community.org/aac-tactics/docs/ocamldoc/index.html).
+  documentation](https://rocq-community.org/aac-tactics/docs/ocamldoc/index.html).
   
   ## Acknowledgements
 

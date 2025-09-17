@@ -1,5 +1,5 @@
 # This file was generated from `meta.yml`, please do not edit manually.
-# Follow the instructions on https://github.com/coq-community/templates to regenerate.
+# Follow the instructions on https://github.com/rocq-community/templates to regenerate.
 name: Docker CI
 
 on:
@@ -17,7 +17,7 @@ jobs:
     strategy:
       matrix:
         image:
-          - 'rocq/rocq-prover:9.0'
+          - 'rocq/rocq-prover:9.0.0'
       fail-fast: false
     steps:
       - uses: actions/checkout@v4
@@ -28,5 +28,5 @@ jobs:
 
 
 # See also:
-# https://github.com/coq-community/docker-coq-action#readme
+# https://github.com/rocq-community/docker-coq-action#readme
 # https://github.com/erikmd/docker-coq-github-action-demo
