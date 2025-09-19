@@ -25,6 +25,7 @@ depends: [
   "ocaml" {>= "4.09.0"}
   "dune" {>= "3.6"}
   "coq" {>= "9.0" & < "9.1"}
+  "coq-stdlib" 
 ]
 
 tags: [
