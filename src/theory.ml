@@ -27,7 +27,7 @@ open Debug
 
 
   (* TODO module HMap = Hashtbl, du coup ? *)
-module HMap = Hashtbl.Make(Constr)
+module HMap = Hashtbl.Make(Termops.ConstrData)
 
 module Stubs = struct
 
@@ -325,7 +325,7 @@ module Trans = struct
 
     let hash_sym_pack p =
       let open Sym in
-      combine3 (Constr.hash p.ar) (Constr.hash p.value) (Constr.hash p.morph)
+      combine3 (Termops.ConstrData.hash p.ar) (Termops.ConstrData.hash p.value) (Termops.ConstrData.hash p.morph)
 
     let eq_bin_pack p1 p2 =
       let open Bin in
@@ -338,8 +338,8 @@ module Trans = struct
 
     let hash_bin_pack p =
       let open Bin in
-      combine5 (Constr.hash p.value) (Constr.hash p.compat)
-        (Constr.hash p.assoc) (Option.hash Constr.hash p.comm) (Option.hash Constr.hash p.idem)
+      combine5 (Termops.ConstrData.hash p.value) (Termops.ConstrData.hash p.compat)
+        (Termops.ConstrData.hash p.assoc) (Option.hash Termops.ConstrData.hash p.comm) (Option.hash Termops.ConstrData.hash p.idem)
 
     let eq_unit_of u1 u2 =
       let open Unit in
@@ -349,8 +349,8 @@ module Trans = struct
 
     let hash_unit_of u =
       let open Unit in
-      combine3 (Constr.hash u.uf_u) (Constr.hash u.uf_idx)
-        (Constr.hash u.uf_desc)
+      combine3 (Termops.ConstrData.hash u.uf_u) (Termops.ConstrData.hash u.uf_idx)
+        (Termops.ConstrData.hash u.uf_desc)
 
     let equal p1 p2 = match p1, p2 with
     | Bin (p1, o1), Bin (p2, o2) ->
@@ -365,7 +365,7 @@ module Trans = struct
     | Sym p ->
       combinesmall 2 (hash_sym_pack p)
     | Unit c ->
-      combinesmall 3 (Constr.hash c)
+      combinesmall 3 (Termops.ConstrData.hash c)
 
   end
 
@@ -728,7 +728,7 @@ module Trans = struct
   let reorder envs =
     let rec insert k v = function
       | [] -> [k,v]
-      | ((h,_)::_) as l when Constr.compare k h = -1 -> (k,v)::l
+      | ((h,_)::_) as l when Termops.ConstrData.compare k h = -1 -> (k,v)::l
       | y::q -> y::insert k v q
     in
     let insert k v l =
