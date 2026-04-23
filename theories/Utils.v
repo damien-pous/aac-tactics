@@ -12,6 +12,7 @@ From Stdlib Require Import Arith NArith List RelationClasses.
 
 Set Implicit Arguments.
 Set Asymmetric Patterns.
+#[warning="-unknown-option"] Set Asymmetric Patterns No Implicits.
 
 (** ** Utilities for positive numbers
 
