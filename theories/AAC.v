@@ -34,6 +34,7 @@ From AAC_tactics Require Import Utils Constants.
 
 Set Implicit Arguments.
 Set Asymmetric Patterns.
+#[warning="-unknown-option"] Set Asymmetric Patterns No Implicits.
 
 Local Open Scope signature_scope.
 
