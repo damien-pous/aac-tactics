@@ -245,6 +245,9 @@ Section s.
 
   #[local] Hint Resolve e_bin e_unit: typeclass_instances.
 
+  Scheme All for prod.
+  Scheme All for nelist.
+  
   (** *** Almost normalised syntax
 
      A term in [T] is in normal form if:
@@ -736,9 +739,9 @@ Section s.
       forall h, eval (sum i (norm_msets norm i h)) == eval (sum i h).
   Proof.
     unfold norm_msets.
-    assert (H : forall h : mset T,
-     eval (sum i (run_msets (norm_msets_ i (is_unit_of i) norm h))) == 
-     eval (sum i h) /\ compat_sum_unit (is_unit_of i) (norm_msets_ i (is_unit_of i) norm h)).
+    assert (H: forall h : mset T,
+               (eval (sum i (run_msets (norm_msets_ i (is_unit_of i) norm h))) == eval (sum i h))
+               /\ compat_sum_unit (is_unit_of i) (norm_msets_ i (is_unit_of i) norm h)).
     induction h as [[a n] | [a n] h [IHh IHh']]; simpl norm_msets_; split.
     - rewrite z1 by auto. rewrite Hnorm. reflexivity.
     - apply compat_sum_unit_return.
@@ -870,8 +873,7 @@ Section s.
   Proof.
     unfold norm_lists.
     assert (H :  forall h : nelist T,
-      eval (prd i (run_list (norm_lists_ i (is_unit_of i) norm h))) ==
-      eval (prd i h)
+      (eval (prd i (run_list (norm_lists_ i (is_unit_of i) norm h))) == eval (prd i h))
       /\ compat_prd_unit (is_unit_of i) (norm_lists_ i (is_unit_of i) norm h)). {   
       induction h as [a | a h [IHh IHh']]; simpl norm_lists_; split.
       rewrite z1'. simpl.  apply Hnorm.   

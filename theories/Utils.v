@@ -20,7 +20,7 @@ Set Asymmetric Patterns.
   - multiplicity of terms in sums
 *)
 
-Notation idx := positive.
+Abbreviation idx := positive.
 
 Fixpoint eq_idx_bool i j :=
   match i,j with
@@ -65,7 +65,7 @@ Qed.
 
 (** ** Dependent types utilities *)
 
-Notation cast T H u := (eq_rect _ T u _ H).
+Abbreviation cast T H u := (eq_rect _ T u _ H).
 
 Section dep.
   Variable U: Type.
@@ -127,7 +127,7 @@ Notation "x ++ y" := (appne x y).
 Definition mset A := nelist (A*positive).
 
 (** Lexicographic composition of comparisons (this is a notation to keep it lazy) *)
-Notation lex e f := (match e with Eq => f | _ => e end).
+Abbreviation lex e f := (match e with Eq => f | _ => e end).
 
 Section lists.
 

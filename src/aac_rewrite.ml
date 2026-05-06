@@ -194,7 +194,7 @@ open Tacexpr
 
 let aac_normalise =
   let mp = MPfile (DirPath.make (List.map Id.of_string ["AAC"; "AAC_tactics"])) in
-  let norm_tac = KerName.make mp (Label.make "internal_normalize") in
+  let norm_tac = KerName.make mp (Id.of_string "internal_normalize") in
   let norm_tac = Locus.ArgArg (None, norm_tac) in
   let open Proofview in
   Proofview.Goal.enter (fun goal -> 
@@ -332,7 +332,7 @@ let aac_rewrite_wrap  ?abort ?(l2r=true) ?(show = false) ?(in_left=true) ?strict
         | Some (left, right, rlt) -> left,right,rlt
       in
       let check_type x =
-        Tacmach.pf_conv_x goal x rlt.Rocq.Relation.carrier
+        Reductionops.is_conv env sigma x rlt.Rocq.Relation.carrier
       in
       let hypinfo = Rocq.Rewrite.get_hypinfo env sigma ?check_type:(Some check_type) rew ~l2r in
       let sigma,rewinfo = dispatch env sigma in_left concl hypinfo in
